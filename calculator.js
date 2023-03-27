@@ -2,8 +2,6 @@ let num1;
 let operator;
 let num2;
 
-let display = "";
-
 const add = (num1, num2) => {
     return parseInt(num1) + parseInt(num2);
 }
@@ -39,8 +37,7 @@ const operate = (operator, num1, num2) => {
 }
 
 const changeDisplay = (value) => {
-    display += value;
-    calcDisplay.textContent = display;
+    calcDisplay.textContent = value;
 }
 
 const numKeys = document.querySelectorAll(".digits");
@@ -58,13 +55,14 @@ numKeys.forEach((key) => {
 
 operators.forEach((key) => {
     key.addEventListener("click", () => {
+        // Save first key pressed.
+        num1 = calcDisplay.textContent;
         operator = key.textContent.trim();
-        changeDisplay(key.textContent);
     });
 });
 
 enterKey.addEventListener("click", () => {
-    const expression = display.split(operator);
-    display = "";
-    calcDisplay.textContent = operate(operator, expression[0], expression[1]);
+    num2 = calcDisplay.textContent;
+
+    calcDisplay.textContent = operate(operator, num1, num2);
 });
