@@ -2,6 +2,8 @@ let num1 = null;
 let operator = null;
 let num2 = null;
 
+let result = null;
+
 let display = "";
 
 const add = (num1, num2) => {
@@ -47,7 +49,7 @@ const calculate = () => {
     display = "";
 
     console.log(num1 + " " + operator + " " + num2);
-    let result = operate(operator, num1, num2);
+    result = operate(operator, num1, num2);
     calcDisplay.textContent = result;
 }
 
@@ -67,12 +69,21 @@ numKeys.forEach((key) => {
 
 operators.forEach((key) => {
     key.addEventListener("click", () => {
-        // Save first key pressed.
-        num1 = parseInt(display);
-        operator = key.textContent.trim();
+        // For more complex expressions.
+        if (display === "") {
+            num1 = result;
+            operator = key.textContent.trim();
+        }
 
-        // Reset number.
-        display = "";
+        // Normal computations.
+        else {
+            // Save first key pressed.
+            num1 = parseInt(display);
+            operator = key.textContent.trim();
+
+            // Reset number.
+            display = "";
+        }
     });
 });
 
