@@ -1,4 +1,7 @@
-
+* {
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+}
 
 .container {
     border: 1px solid red;
@@ -24,8 +27,25 @@
 
 .calculator__display {
     border: 1px solid red;
+
+    width: 300px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .calculator__buttons {
     border: 1px solid red;
+
+    display: flex;
+}
+
+.calculator__digits {
+    border: 1px solid red;
+}
+
+.calculator__operators {
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
 }
