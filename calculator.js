@@ -69,22 +69,25 @@ numKeys.forEach((key) => {
 
 operators.forEach((key) => {
     key.addEventListener("click", () => {
-        // For more complex expressions.
-        if (display === "") {
-            num1 = result;
-            operator = key.textContent.trim();
-        }
+        // Think hard about complex expressions.
 
-        // Normal computations.
-        else {
-            // Save first key pressed.
-            num1 = parseInt(display);
-            operator = key.textContent.trim();
+        // Save first key pressed.
+        num1 = parseInt(display);
+        operator = key.textContent.trim();
 
-            // Reset number.
-            display = "";
-        }
+        // Reset number.
+        display = "";
     });
 });
 
 enterKey.addEventListener("click", calculate);
+clear.addEventListener("click", () => {
+    // Set everything to null.
+    num1 = null;
+    operator = null;
+    num2 = null;
+    result = null;
+    display = "";
+
+    calcDisplay.textContent = "0";
+});
