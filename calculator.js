@@ -43,7 +43,9 @@ const changeDisplay = (value) => {
 }
 
 const calculate = () => {
-    num2 = calcDisplay.textContent;
+    num2 = parseInt(display);
+    display = "";
+
     console.log(num1 + " " + operator + " " + num2);
     let result = operate(operator, num1, num2);
     calcDisplay.textContent = result;
@@ -58,23 +60,20 @@ const calcDisplay = document.querySelector(".calculator__display");
 numKeys.forEach((key) => {
     // addEventListener only accepts anonymous functions.
     key.addEventListener("click", () => {
-        display += key.textContent;
+        display += key.textContent.trim();
         changeDisplay(display);
     });
 });
 
-// operators.forEach((key) => {
-//     key.addEventListener("click", () => {
-//         if (num1 === null) {
-//             // Save first key pressed.
-//             num1 = calcDisplay.textContent;
-//             operator = key.textContent.trim();
-//         }
+operators.forEach((key) => {
+    key.addEventListener("click", () => {
+        // Save first key pressed.
+        num1 = parseInt(display);
+        operator = key.textContent.trim();
 
-//         else {
-//             calculate();
-//         }
-//     });
-// });
+        // Reset number.
+        display = "";
+    });
+});
 
-// enterKey.addEventListener("click", calculate);
+enterKey.addEventListener("click", calculate);
