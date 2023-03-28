@@ -19,7 +19,7 @@ const multiply = (num1, num2) => {
 }
 
 const divide = (num1, num2) => {
-    return num1 / num2;
+    return Math.round((num1 / num2) * 100) / 100;
 }
 
 const operate = (operator, num1, num2) => {
@@ -45,7 +45,12 @@ const operate = (operator, num1, num2) => {
 }
 
 const changeDisplay = (value) => {
-    calcDisplay.textContent = value;
+    // Avoid overflow, only show last 10 digits.
+    if (value.length > 12) {
+        calcDisplay.textContent = value.substring(value.length - 12, value.length);
+    } else {
+        calcDisplay.textContent = value;
+    }
 }
 
 const calculate = () => {
