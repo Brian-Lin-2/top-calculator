@@ -1,6 +1,8 @@
-let num1;
-let operator;
-let num2;
+let num1 = null;
+let operator = null;
+let num2 = null;
+
+let display = "";
 
 const add = (num1, num2) => {
     return parseInt(num1) + parseInt(num2);
@@ -40,6 +42,13 @@ const changeDisplay = (value) => {
     calcDisplay.textContent = value;
 }
 
+const calculate = () => {
+    num2 = calcDisplay.textContent;
+    console.log(num1 + " " + operator + " " + num2);
+    let result = operate(operator, num1, num2);
+    calcDisplay.textContent = result;
+}
+
 const numKeys = document.querySelectorAll(".digits");
 const operators = document.querySelectorAll(".operator");
 const enterKey = document.querySelector(".calculator__enter");
@@ -49,20 +58,23 @@ const calcDisplay = document.querySelector(".calculator__display");
 numKeys.forEach((key) => {
     // addEventListener only accepts anonymous functions.
     key.addEventListener("click", () => {
-        changeDisplay(key.textContent);
+        display += key.textContent;
+        changeDisplay(display);
     });
 });
 
-operators.forEach((key) => {
-    key.addEventListener("click", () => {
-        // Save first key pressed.
-        num1 = calcDisplay.textContent;
-        operator = key.textContent.trim();
-    });
-});
+// operators.forEach((key) => {
+//     key.addEventListener("click", () => {
+//         if (num1 === null) {
+//             // Save first key pressed.
+//             num1 = calcDisplay.textContent;
+//             operator = key.textContent.trim();
+//         }
 
-enterKey.addEventListener("click", () => {
-    num2 = calcDisplay.textContent;
+//         else {
+//             calculate();
+//         }
+//     });
+// });
 
-    calcDisplay.textContent = operate(operator, num1, num2);
-});
+// enterKey.addEventListener("click", calculate);
