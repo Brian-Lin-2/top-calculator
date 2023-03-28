@@ -2,7 +2,7 @@ let num1 = null;
 let operator = null;
 let num2 = null;
 
-let result = null;
+let result = -1;
 
 let display = "";
 
@@ -36,6 +36,10 @@ const operate = (operator, num1, num2) => {
     }
 
     else if (operator === "/") {
+        if (num2 === 0) {
+            return "Insert Snarky Message";
+        }
+
         return divide(num1, num2);
     }
 }
@@ -47,8 +51,6 @@ const changeDisplay = (value) => {
 const calculate = () => {
     num2 = parseInt(display);
     display = "";
-
-    console.log(num1 + " " + operator + " " + num2);
     result = operate(operator, num1, num2);
     calcDisplay.textContent = result;
 }
@@ -69,24 +71,38 @@ numKeys.forEach((key) => {
 
 operators.forEach((key) => {
     key.addEventListener("click", () => {
-        // Think hard about complex expressions.
+        // Complex calculations:
+        if (num1 != null) {
+            calculate();
+            num1 = null;
+        }
 
-        // Save first key pressed.
-        num1 = parseInt(display);
-        operator = key.textContent.trim();
+        // Implies operator was pressed after result is displayed.
+        if (display === "") {
+            num1 = result;
+            operator = key.textContent.trim();
+        }
 
-        // Reset number.
-        display = "";
+        // Regular calculations:
+        else {
+            // Save first key pressed.
+            num1 = parseInt(display);
+            operator = key.textContent.trim();
+
+            // Reset number.
+            display = "";
+        }
     });
 });
 
 enterKey.addEventListener("click", calculate);
+
 clear.addEventListener("click", () => {
     // Set everything to null.
     num1 = null;
     operator = null;
     num2 = null;
-    result = null;
+    result = -1;
     display = "";
 
     calcDisplay.textContent = "0";
