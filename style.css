@@ -12,6 +12,9 @@
 }
 
 .calculator {
+    background-color: black;
+    padding: 15px 10px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,6 +24,8 @@
 }
 
 .calculator__display {
+    background-color: lightgray;
+
     width: 300px;
     font-size: 40px;
     font-weight: bold;
