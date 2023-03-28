@@ -19,7 +19,8 @@ const multiply = (num1, num2) => {
 }
 
 const divide = (num1, num2) => {
-    return Math.round((num1 / num2) * 100) / 100;
+    // Prevents overflow.
+    return Math.round((num1 / num2) * (10**10)) / 10**10;
 }
 
 const operate = (operator, num1, num2) => {
