@@ -53,6 +53,8 @@ const calculate = () => {
     display = "";
     result = operate(operator, num1, num2);
     calcDisplay.textContent = result;
+
+    num1 = null;
 }
 
 const numKeys = document.querySelectorAll(".digits");
@@ -74,7 +76,6 @@ operators.forEach((key) => {
         // Complex calculations:
         if (num1 !== null) {
             calculate();
-            num1 = null;
         }
 
         // Implies operator was pressed after result is displayed.
