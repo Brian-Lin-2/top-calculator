@@ -1,3 +1,31 @@
-* {
-    background-color: pink;
+
+
+.container {
+    border: 1px solid red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.calculator {
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 500px;
+    width: 300px;
+}
+
+.calculator__display {
+    border: 1px solid red;
+}
+
+.calculator__buttons {
+    border: 1px solid red;
 }

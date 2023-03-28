@@ -72,7 +72,7 @@ numKeys.forEach((key) => {
 operators.forEach((key) => {
     key.addEventListener("click", () => {
         // Complex calculations:
-        if (num1 != null) {
+        if (num1 !== null) {
             calculate();
             num1 = null;
         }
